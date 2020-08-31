@@ -42,11 +42,9 @@ public class HomeController {
                 filter(g -> g.getName().equals(name)).findFirst().get());
         return "gif-details";
     }
-
-    @GetMapping("/posladek")
-    public String getPosladek(ModelMap map){
-
-        map.put("posadek","Moj super posladek");
-        return "posladek";
-    }
+//@GetMapping("/favorites")
+//    public String getFavorites(){
+//
+//        return "favorites";
+//}
 }
