@@ -11,6 +11,7 @@ import java.util.List;
 public class Gif {
     private String name;
     private boolean favorite;
+    private int categoryId;
 
 
     public String getFilePath() {
@@ -25,11 +26,11 @@ public class Gif {
 
     static {
 
-        GIFS.add(new Gif("android-explosion",true));
-        GIFS.add(new Gif("ben-and-mike",false));
-        GIFS.add(new Gif("book-dominos",true));
-        GIFS.add(new Gif("compiler-bot",false));
-        GIFS.add(new Gif("cowboy-coder",true));
-        GIFS.add(new Gif("infinite-andrew",true));
+        GIFS.add(new Gif("android-explosion",true,1));
+        GIFS.add(new Gif("ben-and-mike",false,2));
+        GIFS.add(new Gif("book-dominos",true,3));
+        GIFS.add(new Gif("compiler-bot",false,1));
+        GIFS.add(new Gif("cowboy-coder",true,2));
+        GIFS.add(new Gif("infinite-andrew",true,3));
     }
 }

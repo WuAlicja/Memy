@@ -50,9 +50,24 @@ public class HomeController {
     }
 
     @GetMapping("/categories")
-    public String showCategories(ModelMap map){
-        map.put("categories",Category.ALL_CATEGORIES);
+    public String showCategories(ModelMap map) {
+        map.put("categories", Category.ALL_CATEGORIES);
         return "categories";
+    }
+
+    @GetMapping("/category/{id}")
+    public String category(@PathVariable int id, ModelMap map) {
+        Category category = Category.ALL_CATEGORIES.stream().filter(c -> c.getId() == id).findFirst().get();
+        map.put("category", category);
+        List<Gif> gifList = new ArrayList<>();
+        for (Gif gif : Gif.GIFS
+        ) {
+            if (gif.getCategoryId() == id) {
+                gifList.add(gif);
+            }
+        }
+        map.put("gifs", gifList);
+        return "category";
     }
 }
 
