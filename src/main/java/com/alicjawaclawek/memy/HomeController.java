@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,6 +69,31 @@ public class HomeController {
         }
         map.put("gifs", gifList);
         return "category";
+    }
+
+    //    @GetMapping("/?q={word}#")
+//    public String question(@PathVariable String word, ModelMap map) {
+//
+////        map.put("category",Category.ALL_CATEGORIES.stream().filter(c -> c.getName().contains(word)).findFirst().get());
+//        map.put("gifs", Gif.GIFS.stream().
+//                filter(g -> g.getName().contains(word)).findFirst().get());
+//
+//        return "question";
+//    }
+    /*
+    RequestParam oznacza ze parametr bedzie wysylany do adresu url o nazwie name /gifs/search?name=ben
+     */
+    @GetMapping("/gifs/search")
+    public String searchGifs(@RequestParam String q, ModelMap map) {
+
+        List<Gif> gifs = new ArrayList<>();
+        for (Gif gif : Gif.GIFS) {
+            if (gif.getName().contains(q)) {
+                gifs.add(gif);
+            }
+        }
+        map.put("gifs", gifs);
+        return "home";
     }
 }
 
